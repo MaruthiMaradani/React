@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>React Basic</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+    class Renderlist extends React.Component {
+       // ClickHandler = (e) => {
+         //   console.log('button is clicked')
+        //}
+        function Namelist() {
+            const person = [
+                { id: 501 , name: 'maruthi' ,age: 18 ,skill: 'programmer'},
+                {id: 502 , name: 'silpa' ,age: 18 ,skill: 'developer'},
+                {id: 503 , name: 'harsha' ,age: 18 ,skill: 'tester'}
+            ]
+            const personList = person.map(person => <Person key={person.id}person={person}) 
+            return (
+                <div> {NAm list}  </div>
+            )
+
+        }
+        function Person ({person}){
+            return (
+                <div>
+                    <h2>
+                        I am {person.name}  I am {person.age} are old.I know {person.skill}
+                    </h2> 
+                </div>
+            )           
+        }
+
+        render() {
+             return(
+                <div >
+                    <Namelist />
+                </div>
+            )
+        }
+        ReactDOM.render(<Renderlist /> , document.getElementById('app'));  
+    }
+</script>
+</body>
+</html> 

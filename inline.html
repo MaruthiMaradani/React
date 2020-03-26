@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>React Basic</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+    
+    class Property extends React.Component {
+        const Heading={
+            fontsize: '72px',
+            color: 'blue'
+        }
+        function Inline() {
+            return (
+                <div>
+                <h1 style={Heading}>Inline</h1>
+                </div>
+            )
+        }
+        render() {
+            
+            //const {state1 ,state2} =this.props
+            return (
+                <div>
+                    <h1>Hacker..!!</h1>  
+                    <div>
+                        {this.Inline}
+                        <Inline />
+                        </div>
+                </div>
+            );
+        }
+    } 
+        ReactDOM.render(<Property /> , document.getElementById('app'));
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>React Basic</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+    "use strict"
+    class EventBind extends React.Component {
+        constructor(props) {
+            super(props)
+            this.state = {
+                message: "Hii Darling"
+            }
+           //3rd//
+           // this.clickHandler = this.clickHandler.bind(this)
+            //binding in constructor
+        }
+        //1,2,3 rd//
+        //clickHandler(e) {
+          //  this.setState ({
+            //    message: "Good Bye"
+            //})
+           //console.log(this)
+       // }
+       //4th 
+        clickHandler = (e) => {
+            e.preventDefault();
+            this.setState ({
+                message: "Good Bye"
+            })
+        }
+    
+      render() {
+          return(
+              <div>
+                <div>{this.state.message}</div>
+                { /*/*1./* <button onClick={this.clickHandler.bind(this)}>Click-me</button>*/}
+                    { /*/*2./*<button onClick={() => this.clickHandler()}>Click-me</button>*/}
+               
+                    {/* 3rd 4th*/} 
+                    <button onClick={this.clickHandler}>Click-me</button> 
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(<EventBind /> , document.getElementById('app'));
+
+       
+    
+</script>
+</body>

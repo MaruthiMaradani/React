@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>React Basic</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+    
+    class Documents extends React.Component {
+        constructor(props) {
+                super(props)
+                this.state = {
+                Username: '' ,
+                Comments: '' ,
+                PhoneNo: '' ,
+                Topic: '' ,
+                isGoing: '' ,
+                numberOfGuests: '',
+                date: new Date(),
+                };
+                this.handleSubmit = this.handleSubmit.bind(this);
+                this.fileInput = React.createRef();
+            }
+            handlerUsernameChange =(event) => {
+                this.setState({
+                    username: event.target.value.toUpper()
+                })
+            }
+            handlerCommentChange = (event) => {
+                this.setState({
+                    Comments: event.target.Comments
+                    }) 
+            }
+            handlerPhoneNoChange =(event) => {
+                this.setState({
+                    PhoneNo: event.target.PhoneNo
+                })
+            }
+            handleTopicChange =  (event) => {
+                this.setState({
+                    Topic: event.target.value
+                })
+            }
+            handleSubmit =(event) =>{
+                alert(`${this.state.username} ${this.state.comments} ${this.state.topic}`)
+                event.preventDefault()
+            }
+            handleInputChange(event) {
+                const target = event.target;
+                const value = target.type === 'checkbox' ? target.checked : target.value;
+                const name = target.name;
+
+                this.setState({
+                [name]: value
+                });
+            }
+            handleSubmit(event) {
+                    event.preventDefault();
+                    alert(
+                    `Selected file - ${
+                    this.fileInput.current.files[0].name
+                    }`
+                    );
+            }
+            onChange = date => this.setState({ date })
+        render() {    
+        return (
+            <div>
+                <h1>Hacker..!!</h1>  
+                
+                    <form onSubmit={this.handlesubmit} >
+                        <div>
+                            <label>Username</label>
+                            <input type='text' value={this.state.value} onChange={this.handlerUsernameChange} />
+                        </div>
+                        <div> 
+                            <label>Comments</label>
+                            <textarea value={this.state.Comments}  onChange={this.handlerCommentChange}></textarea>
+                        </div>
+                        <div>
+                            <label>Phone-No</label>
+                            <input type='number' value={this.state.PhoneNo} onChange={this.handlerPhoneNoChange} />
+                        </div>
+                        <div>
+                            <label>Topic</label>
+                            <select value={this.state.topic} onChange={this.handleTopicChange}>
+                            <option value='react'>React</option>
+                            <option value='Python'>Python</option>
+                            <option value='C++'>C++</option>
+                            <option value='Java'>Java</option>
+                            <option value='C'>C</option>
+                            <option value='HTML'>HTMl</option>
+                            </select>
+                        </div>
+                        <div>
+                            <Calendar
+                            onChange={this.onChange}
+                            value={this.state.date}
+                            />
+                            </div>
+
+                        <label>
+                            Upload file:
+                            <input type="file" ref={this.fileInput} />
+                            </label>
+                        <div>
+                            <label>
+                                Is going:
+                                <input
+                                name="isGoing"
+                                type="checkbox"
+                                checked={this.state.isGoing}
+                                onChange={this.handleInputChange} />
+                            </label>
+                            <br />
+                            <label>
+                                Number of guests:
+                            <input
+                                name="numberOfGuests"
+                                type="number"
+                                value={this.state.numberOfGuests}
+                                onChange={this.handleInputChange} />
+                            </label>
+                        </div>  
+                        <div>
+                            <button type='submit'>submit</button>
+                        </div>
+                    </form>
+            </div>
+       );
+        }
+} 
+    ReactDOM.render(<Documents /> , document.getElementById('app'));
+</script>
+</body>
+</html>

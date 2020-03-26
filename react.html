@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>React Basic</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+    class Counter extends React.Component {
+        constructor(props){
+            super(props)
+            this.state={
+                count: 0
+            }
+        }
+        increment(){
+            //this.setState({
+              //  count: this.state.count + 1
+           // } ,
+            //() => {
+              //  console.log('callback value',this.state.count )
+            //})
+            this.setState((preState,props) => ({
+                Count: prevState.count + this.props.addvalue
+            }))
+            console.log(this.state.Count)
+        }
+        incrementFive() {
+            this.increment()
+            this.increment()
+            this.increment()
+            this.increment()
+            this.increment()
+        }
+        render() {
+            return (
+                <div>
+                    <h1>Hacker..!!</h1>  
+                    <div>Count - {this.state.count}</div>  
+                    <button onClick={() => this.incrementFive()}>Click</button>
+                </div>
+            );
+        }
+    } 
+        ReactDOM.render(<Counter /> , document.getElementById('app'));
+</script>
+    
+</body>
+</html>
